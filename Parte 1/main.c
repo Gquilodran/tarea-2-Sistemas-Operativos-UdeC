@@ -6,7 +6,8 @@
 #include <time.h>
 
 /*Para compilarlo se necesita el siguiente comando
-  gcc main.c base.c -lpthread -o programa
+  gcc main.c barrera.c -lpthread -o programa
+  y luego ./programa.exe
 */
 
 
@@ -41,7 +42,7 @@ void* trabajo_hebra(void* arg){
 	for(int i=0; i<Etapa; i++){
 		usleep(nRandom());
 		printf("%d esperando en etapa %d.\n", id,i);
-		barrier_wait(barrera);
+		barrera_wait(barrera);
 		printf("%d paso barrera en etapa %d.\n",id,i);
 	}
 	return NULL;
@@ -60,7 +61,7 @@ int main(int argc, char* argv[]){
 	scanf("%d %d", &N, &E);
 
 	barrera_t b;
-	barrier_init(&b, N);
+	barrera_init(&b, N);
 
 	dHebra datos[N];
 	for(int i=0; i<N; i++){
@@ -77,6 +78,6 @@ int main(int argc, char* argv[]){
 	for (int i = 0; i < N; i++) {
         pthread_join(hebras[i], NULL);
     }
-    barrier_destroy(&b);
+    barrera_destroy(&b);
 	return 0;
 }

@@ -2,14 +2,14 @@
 #include "barrera.h"
 
 
-void barrier_init(barrera_t* b, int N){
+void barrera_init(barrera_t* b, int N){
 	b->count = 0;
 	b->etapa = 0;
 	b->n = N;
 	pthread_mutex_init(&b->mutex, NULL);
 	pthread_cond_init(&b->cond, NULL);
 }
-void barrier_wait(barrera_t* b){
+void barrera_wait(barrera_t* b){
 	pthread_mutex_lock(&b->mutex);
 		int etapa_local = b->etapa;
 		b->count = b->count + 1;
@@ -26,7 +26,7 @@ void barrier_wait(barrera_t* b){
 		pthread_mutex_unlock(&b->mutex);
 }
 
-void barrier_destroy(barrera_t* b){
+void barrera_destroy(barrera_t* b){
 	pthread_mutex_destroy(&b->mutex);
 	pthread_cond_destroy(&b->cond);
 }

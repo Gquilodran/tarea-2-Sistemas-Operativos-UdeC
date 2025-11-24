@@ -10,8 +10,8 @@ typedef struct{
 	pthread_mutex_t mutex;	
 } barrera_t;
 
-void barrier_init(barrera_t* b, int N);
-void barrier_wait(barrera_t* b);
-void barrier_destroy(barrera_t* b);
+void barrera_init(barrera_t* b, int N);
+void barrera_wait(barrera_t* b);
+void barrera_destroy(barrera_t* b);
 
 #endif
