@@ -1,20 +1,18 @@
-#import <stdio.h>
-#import <stdint.h>
-#include <pthread.h>
-#include <barrera.h>
+#include <stdio.h>
+#include "barrera.h"
 
 
 void barrier_init(barrera_t* b, int N){
-	b.count = 0;
-	b.etapa = 0;
-	b.n = N;
+	b->count = 0;
+	b->etapa = 0;
+	b->n = N;
 	pthread_mutex_init(&b->mutex, NULL);
-	pthread_cont_init(&b->cond, NULL);
+	pthread_cond_init(&b->cond, NULL);
 }
 void barrier_wait(barrera_t* b){
-	pthread_mutex_lock(b->mutex);
+	pthread_mutex_lock(&b->mutex);
 		int etapa_local = b->etapa;
-		b.count = b.count + 1;
+		b->count = b->count + 1;
 
 		if(b->count < b->n){
 			while(b->etapa == etapa_local){
