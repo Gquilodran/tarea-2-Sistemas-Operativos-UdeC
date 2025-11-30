@@ -5,10 +5,11 @@ en los distintos archivos.
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <stdlib.h>
 
 //Traduce un str de un numero Hexadecimal a Decimal int
-int traduce_Hexa(char* arg){
-	int hex=0;
+long int traduce_Hexa(char* arg){
+	long int hex=0;
 	int init=0;
 	int largo = strlen(arg);
 	if(arg[0]=='0' && (arg[1]=='X' || arg[1]=='x')){
@@ -36,6 +37,10 @@ int traduce_Bi(char* arg){
 	int bi=0;
 	for(int i=0; i<strlen(arg); i++){
 		int digito = arg[i] - '0';
+		if(digito !=0 && digito !=1){
+			printf("Error\n");
+			return -1;
+		}
 		bi = (bi*2)+digito;
 	}
 	return bi;
@@ -47,7 +52,33 @@ int create_Mask(int page_size){
 	return mask;
 }
 
+long int lee_direccionV(char* arg, int page_size, int* npv_out, int* offset_out){
+	long int valor_dv;
 
+	if(strlen(arg)>2 && arg[0]=='0' && (arg[1]=='X' || arg[1]=='x')){
+		valor_dv = traduce_Hexa(arg);
+	}else{
+		valor_dv=strtol(arg, NULL, 10);
+	}
+	if(valor_dv<0){
+		return -1;
+	}
+
+	double b_val=log2((double)page_size);
+	int b=(int)round(b_val);
+
+	if((1<<b)-1 != page_size){
+		return -1;
+	}
+
+	int Mask= create_Mask(page_size);
+
+	int offset= valor_dv & Mask;
+	int npv= valor_dv >> b;
+	*npv_out=npv;
+	*offset_out=offset;
+	return valor_dv;
+}
 
 
 
