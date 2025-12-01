@@ -60,21 +60,31 @@ long int lee_direccionV(char* arg, int page_size, int* npv_out, int* offset_out)
 	}else{
 		valor_dv=strtol(arg, NULL, 10);
 	}
+
 	if(valor_dv<0){
 		return -1;
 	}
 
-	double b_val=log2((double)page_size);
-	int b=(int)round(b_val);
-
-	if((1<<b)-1 != page_size){
+	// Verificar que page_size es potencia de 2
+	if (page_size <= 0 || (page_size & (page_size - 1)) != 0){
 		return -1;
 	}
+
+	//double b_val=log2((double)page_size);
+	//int b=(int)round(b_val);
+
+	//if((1<<b)-1 != page_size){
+	//	return -1;
+	//}
+
+	int b = 0;
+	while ((1 << b) < page_size) b++;
 
 	int Mask= create_Mask(page_size);
 
 	int offset= valor_dv & Mask;
 	int npv= valor_dv >> b;
+	
 	*npv_out=npv;
 	*offset_out=offset;
 	return valor_dv;

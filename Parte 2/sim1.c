@@ -37,12 +37,12 @@ static int clock_reemplazo(Sim* sim){
     bool encontrado = false;
 
     while(!encontrado){
-        if(sim->tabla_marcos[sim->reloj_puntero]->referencia==true){
-            sim->tabla_marcos[sim->reloj_puntero]->referencia = false;
+        if(sim->tabla_marcos[sim->reloj_puntero].referencia==true){
+            sim->tabla_marcos[sim->reloj_puntero].referencia = false;
         }else{
             marco_victima = sim->reloj_puntero;
+            sim->tabla_marcos[marco_victima].valido = false;
             encontrado = true;
-            sim->tabla_marcos[marco_victima]->valido = false;
         }
         sim->reloj_puntero = (sim->reloj_puntero + 1) % sim->Nmarcos;
     }
@@ -57,7 +57,7 @@ long int sim_procesar_dv(Sim* sim, long int dv, int npv, int offset, bool verbos
     if(marco_encontrado >= 0){
         marco_usado= marco_encontrado;
         resultado = "HIT";
-        sim->tabla_marcos[marco_usado]->referencia = true;
+        sim->tabla_marcos[marco_usado].referencia = true;
     }else{
         sim->fallos_de_pagina++;
         resultado = "FALLO";
@@ -68,9 +68,9 @@ long int sim_procesar_dv(Sim* sim, long int dv, int npv, int offset, bool verbos
             marco_usado = clock_reemplazo(sim);
         }
 
-        sim->tabla_marcos[marco_usado]->npv = npv;
-        sim->tabla_marcos[marco_usado]->valido = true;
-        sim->tabla_marcos[marco_usado]->referencia = true;
+        sim->tabla_marcos[marco_usado].npv = npv;
+        sim->tabla_marcos[marco_usado].valido = true;
+        sim->tabla_marcos[marco_usado].referencia = true;
 
     }
 

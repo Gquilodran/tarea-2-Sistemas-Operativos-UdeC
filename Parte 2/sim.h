@@ -18,7 +18,7 @@ typedef struct{
     int marcos_libres;
     int fallos_de_pagina;
 
-    Pte** tabla_marcos;
+    Pte* tabla_marcos;
 } Sim;
 
 void inicializa_sim(Sim* sim, int Nmarcos, int tamano_marcos);
