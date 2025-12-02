@@ -65,7 +65,7 @@ En este repositorio se incluyen ambas partes de la tarea 2, cada una en su carpe
     Ejecutar: ./programa.exe
   ##Parte II:
     Compilar: gcc-o sim main.c sim.c funcion.c-lm
-    Ejecutar:  Caso 1: ./sim 8 4096 trace1.txt  Caso 2:  ./sim 8 4096–verbose trace1.txt
+    Ejecutar:  Caso 1: ./sim 8 4096 trace1.txt  Caso 2:  ./sim 8 4096 -–verbose trace1.txt
  ```
 ## 📑 Licencia
 Este codigo fue realizado con fines academicos por estudiantes de la universidad de Concepción, se prohíbe su distribución con otros fines.
