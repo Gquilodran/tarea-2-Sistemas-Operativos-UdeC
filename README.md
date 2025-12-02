@@ -16,9 +16,9 @@ El trabajo aborda dos temáticas principales del área:
 - **Sincronización de hebras mediante barreras reutilizables.**
 - **Simulación de memoria virtual y manejo de fallos de página.**
 
-Todo el código se encuentra escrito en **lenguaje C**, haciendo uso de `pthread` y funciones POSIX.
+Todo el código se encuentra escrito en **lenguaje C**, haciendo uso de `pthread` y distintas otras funcónes y bibliotecas.
 
-En este repositorio se incluyen archivos fuente, cabeceras y archivos auxiliares necesarios para la correcta ejecución del proyecto.
+En este repositorio se incluyen ambas partes de la tarea 2, cada una en su carpeta correspondiente y dividios en archivos distintos para facilitar su entendimiento y comprención.
 
 ---
 
@@ -30,14 +30,14 @@ En este repositorio se incluyen archivos fuente, cabeceras y archivos auxiliares
 - Ejecución en E etapas
 - Tipo de dato `barrera_t`
 - Funciones implementadas:
-  - `barrier_init()`
-  - `barrier_wait()`
-  - `barrier_destroy()`
+  - `barrera_init()`
+  - `barrera_wait()`
+  - `barrera_destroy()`
 - Control mediante:
   - `pthread_mutex_t`
   - `pthread_cond_t`
 - Sincronización por etapas:
-  - ninguna hebra avanza a la siguiente etapa hasta que todas hayan llegado a la barrera
+  - ninguna hebra avanza a la siguiente etapa hasta que todas hayan llegado a la barrera.
 
 ---
 
@@ -60,21 +60,18 @@ En este repositorio se incluyen archivos fuente, cabeceras y archivos auxiliares
 
 ## 📦 Requisitos
 
-- **Sistema Operativo:** Linux/Unix recomendado  
+- **Sistema Operativo:** La tarea fue desarrollada en Windows y compilada con Mingw, pero se recomienda el uso de Linux/Unix y por ende de gcc para compilarlo.
   *(puede compilarse también en Windows con Mingw, Cygwin o WSL)*
 
-- **Compilador:** `gcc` (recomendado)
-
-- **Bibliotecas necesarias:**
-  - `<pthread.h>`
-  - `<stdio.h>`
-  - `<stdlib.h>`
-  - `<unistd.h>` *(Part I)*
-
----
-
-## 🛠️ Compilación
-
-### Parte I (barrera)
-```bash
-gcc main.c barrera.c -o barrera -lpthread
+## Compilación y ejecución:
+  
+```bash 
+  ##Parte I:
+    Compilar: gcc main.c barrera.c-lpthread-o programa
+    Ejecutar: ./programa.exe
+  ##Parte II:
+    Compilar: gcc-o sim main.c sim.c funcion.c-lm
+    Ejecutar:  Caso 1: ./sim 8 4096 trace1.txt  Caso 2:  ./sim 8 4096–verbose trace1.txt
+ ```
+## 📑 Licencia
+Este codigo fue realizado con fines academicos por estudiantes de la universidad de Concepción, se prohíbe su distribución con otros fines.
