@@ -5,7 +5,6 @@
 - Gonzalo Quilodrán Neira.
 - Joaquín Sandoval Reyes.
 
-# 🧠 Proyecto — Sistemas Operativos (Tarea 2)
 
 ## 📌 Descripción
 
@@ -43,25 +42,20 @@ En este repositorio se incluyen ambas partes de la tarea 2, cada una en su carpe
 
 ### 💾 Parte II — Simulación de Memoria Virtual
 
-- Lectura de accesos de memoria desde archivo
-- Traducción de direcciones virtuales (página + offset)
-- Manejo de fallos de página
-- Implementación de algoritmos de reemplazo:
-  - FIFO
-  - LRU
-  - LFU  
-  *(dependiendo del enunciado)*
+- Lectura de accesos de memoria desde archivo.
+- Traducción de direcciones virtuales (página + offset).
+- Manejo de fallos de página.
+- Implementación de algoritmos de reemplazo de reloj.
 - Estadísticas de ejecución:
-  - número total de fallos
-  - estado de marcos en memoria
-  - trazado opcional de cada acceso
+  - número total de fallos.
+  - estado de marcos en memoria.
+  - trazado opcional de cada acceso.
 
 ---
 
 ## 📦 Requisitos
 
 - **Sistema Operativo:** La tarea fue desarrollada en Windows y compilada con Mingw, pero se recomienda el uso de Linux/Unix y por ende de gcc para compilarlo.
-  *(puede compilarse también en Windows con Mingw, Cygwin o WSL)*
 
 ## Compilación y ejecución:
   
