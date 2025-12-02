@@ -33,6 +33,7 @@ long int traduce_Hexa(char* arg){
 } 
 
 //Convierte un str de un Binario a un Decimal int
+//Nota: al momento de hacer el codigo, lei binario en vez de decimal. por eso esta funcion
 int traduce_Bi(char* arg){
 	int bi=0;
 	for(int i=0; i<strlen(arg); i++){
